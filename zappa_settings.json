@@ -1,9 +1,9 @@
 {
     "dev": {
         "app_function": "app.app.app",
-        "project_name": "sample",
-        "runtime": "python3.6",
-        "s3_bucket": "my-bucket",
-        "aws_region": "us-east-1"
+        "aws_region": "us-east-1",
+        "project_name": "txtsAPI",
+        "runtime": "python3.7",
+        "s3_bucket": "zappa-7la88m1as",
     }
- }
+}
