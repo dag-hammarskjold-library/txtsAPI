@@ -30,9 +30,19 @@ def show_text(path):
     #return 'You want path: %s' % path
     #1. connect to mongo DB and issue a query 
     
- 
-    for doc in txts_coll.find({"doc_sym":path}):
-        return_data=doc['raw_txt']
+    doc_list=list(txts_coll.find({"doc_sym":{"$regex":"^"+path+"$"}}))
+    if len(doc_list)==0:
+        doc_list=list(txts_coll.find({"doc_sym":{"$regex":path}}))
+
+   
+       
+    
+    if len(doc_list)==1:
+        return_data=doc_list[0]['raw_txt']
+    else: 
+        return_data=sorted([doc['doc_sym'] for doc in doc_list],key =lambda x:int(''.join(c for c in x if c.isdigit())))
+        #return_data=sorted(["<a href="+doc['doc_sym']+">" for doc in doc_list])
+        #return_data=sorted([url_for('/'+doc_list[0]['raw_txt']) for doc in doc_list])
         
     if return_data=="":
         return jsonify('text with document symbol:%s was not found' % path)
