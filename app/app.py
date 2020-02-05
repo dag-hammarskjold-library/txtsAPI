@@ -4,7 +4,8 @@ from bson.objectid import ObjectId
 from app.config import Config
 import boto3, re, time, os, pymongo
 from pymongo import MongoClient
-from dlx import DB, Bib, Auth
+from dlx import DB
+from dlx.marc import Bib, Auth, BibSet, QueryDocument,Condition,Or
 
 # Initialize your application.
 app = Flask(__name__)
