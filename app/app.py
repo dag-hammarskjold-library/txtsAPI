@@ -46,7 +46,7 @@ def show_text(path):
         
     if return_data=="":
         return jsonify('text with document symbol:%s was not found' % path)
-    #return(render_template('ds.html', data=return_data))
+    #return(render_template('ds.html', data=return_data)) 
     return jsonify(return_data)
 
    
