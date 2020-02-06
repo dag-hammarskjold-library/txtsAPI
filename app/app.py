@@ -41,7 +41,11 @@ def show_text(path):
        
     
     if len(doc_list)==1:
-        return_data=doc_list[0]['raw_txt']
+        if doc_list[0]['doc_sym'][0]!='S':
+            return_data=doc_list[0]['raw_txt']
+        else:
+            doc_1=doc_list[0].pop('_id')
+            return_data=doc_list[0]
     else: 
         return_data=sorted([doc['doc_sym'] for doc in doc_list],key =lambda x:int(''.join(c for c in x if c.isdigit())))
         #return_data=sorted(["<a href="+doc['doc_sym']+">" for doc in doc_list])
@@ -50,6 +54,7 @@ def show_text(path):
     if return_data=="":
         return jsonify('text with document symbol:%s was not found' % path)
     #return(render_template('ds.html', data=return_data)) 
+    #print(return_data)
     return jsonify(return_data)
 
    
