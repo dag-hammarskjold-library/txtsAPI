@@ -30,7 +30,9 @@ def show_text(path):
     #return(render_template('ds.html', data=path))
     #return 'You want path: %s' % path
     #1. connect to mongo DB and issue a query 
-    
+    path=path.replace('(','\(')
+    path=path.replace(')','\)')
+    print(f"path is {path}")
     doc_list=list(txts_coll.find({"doc_sym":{"$regex":"^"+path+"$"}}))
     if len(doc_list)==0:
         doc_list=list(txts_coll.find({"doc_sym":{"$regex":path}}))

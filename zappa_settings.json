@@ -2,9 +2,9 @@
     "dev": {
         "app_function": "app.app.app",
         "aws_region": "us-east-1",
-        "project_name": "txtAPI",
+        "profile_name": "default",
+        "project_name": "txtapi",
         "runtime": "python3.7",
-        "s3_bucket": "zappa-7la88m1as",
-		"slim_handler": false,
+        "s3_bucket": "zappa-1x1o1tt0g"
     }
 }
